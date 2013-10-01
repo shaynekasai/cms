@@ -27,7 +27,7 @@ Phase 2 Roadmap
 
 Phase 3 Roadmap
 ---------------------
-- Content entry
+- FTP / FS support
 
 
 Quick Start
