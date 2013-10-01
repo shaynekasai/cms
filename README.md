@@ -39,12 +39,12 @@ Phase 3 Roadmap
 
 Quick Start
 ---------------------
-To create a new project:
+To create a new project:<br/>
 cms --create foo
 
-To create a new index page
-cd foo
+To create a new index page:<br/>
+cd foo<br/>
 cms --add-root index
 
-To assign a Jinja2 template to index
+To assign a Jinja2 template to index:<br/>
 cms --page index --template layout.html
