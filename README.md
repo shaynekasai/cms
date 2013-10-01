@@ -10,8 +10,24 @@ be a command line away.
 This is NOT, I repeat, this is NOT meant for production use or the typical user.  But, if you find it useful
 then hurrah!
 
-What's in the box?
+This aint the easy way out either, you'll still need to create Jinja2 templates 
+
+Phase 1 Roadmap
 ---------------------
+- Config
+- JSON support
+- Page creation
+
+Phase 2 Roadmap
+---------------------
+- Jinja2 templating
+- Markdown content entry
+- SASS support
+- Site generation
+
+Phase 3 Roadmap
+---------------------
+- Content entry
 
 
 Quick Start
