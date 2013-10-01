@@ -31,6 +31,10 @@ Phase 2 Roadmap
 Phase 3 Roadmap
 ---------------------
 - FTP / FS / GIT support
+- Minification
+- Flask support
+- Database support
+- Content templates?
 
 
 Quick Start
