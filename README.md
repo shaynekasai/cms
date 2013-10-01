@@ -9,7 +9,7 @@ I really wanted something lightweight that I could run at the command line, supe
 about the details.  This is content entry focused and meant for someone like me who is comfortable running
 commands in the terminal.
 
-If you want to build something, then you should probably use Yeoman or Brunch.
+If you want to build something, then you should probably use Mixture, Yeoman or Brunch.
 
 This is NOT, I repeat, this is NOT meant for production use or the typical user.  But, if you find it useful
 then hurrah!
