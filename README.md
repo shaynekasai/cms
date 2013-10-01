@@ -27,7 +27,7 @@ Phase 2 Roadmap
 
 Phase 3 Roadmap
 ---------------------
-- FTP / FS support
+- FTP / FS / GIT support
 
 
 Quick Start
