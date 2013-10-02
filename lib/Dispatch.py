@@ -2,7 +2,7 @@ import argparse
 import os 
 
 from File import File 
-from Json import Json
+
 
 class Dispatch(object):
 	def __init__(self):
@@ -46,7 +46,9 @@ class Dispatch(object):
 		
 		try:
 			with open(project_name): 	
-				print "Creating a root page..."	
+				objFile = File()
+				objFile.createRootPage(name);
+				
 				
 		except IOError:
 			print 'Dang, make sure you\'re in the project folder'
