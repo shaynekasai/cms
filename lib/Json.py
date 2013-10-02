@@ -9,7 +9,7 @@ class Json(object):
 	
 	def createRootPage(self, page_name):
 		
-		self.pageConfig["pages"]["config"].append({"name": page_name, "template":"", "content":[]})
+		self.pageConfig["pages"]["config"].append({"name": page_name, "template":"", "content":[], "pages":[]})
 		
 		
 		return self.pageConfig
@@ -17,5 +17,20 @@ class Json(object):
 	def createChildPage(self):
 		print "Creating a child page"
 		
-	def setPageTemplate(self):
-		print "Setting the template for a page"
+	def setPageTemplate(self, page_name, template_filename):
+		print "Setting the template for %s" % page_name
+		nodePath = page_name.split("/")
+		
+		
+		currentNode = self.pageConfig["pages"]["config"]
+		lastNode = None
+		
+		for path in nodePath:
+			for node in currentNode:
+				if node["name"] == path:
+					lastNode = node
+					currentNode = node["pages"]
+		
+		lastNode["template"] = template_filename
+					
+		return self.pageConfig

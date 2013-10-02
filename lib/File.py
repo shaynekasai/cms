@@ -20,8 +20,17 @@ class File(object):
 			if exc.errno == errno.ENOTDIR:
 				shutil.copy(source, destination)
 			else: raise
+	
+	def writePage(self, str):
+		with open('_config/pages.json', 'w') as outfile:
+			json.dump(str, outfile)
 			
 	def createRootPage(self, page_name):
 		jsonObj = Json()
-		with open('_config/pages.json', 'w') as outfile:
-			json.dump(jsonObj.createRootPage(page_name), outfile)
+		self.writePage(jsonObj.createRootPage(page_name))
+		
+	
+		
+	def setTemplate(self, page_name, template_filename):
+		jsonObj = Json()
+		self.writePage(jsonObj.setPageTemplate(page_name, template_filename))
