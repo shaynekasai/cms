@@ -17,8 +17,11 @@ class Dispatch(object):
 		self.argParser.add_argument('--add-child', action="append", dest="SUB_PAGE_NAME", help='Creates a child page, use with --add-child, example: cms --parent foo --add-child bar')
 		
 		
-		self.argParser.add_argument('--page', action="append", dest="PAGE_NAME", help='Use with --template')
+		self.argParser.add_argument('--page', action="append", dest="PAGE_NAME", help='Use with --template or --edit-md')
 		self.argParser.add_argument('--template', action="append", dest="TEMPLATE_FILENAME", help='Sets the page with the template, use with --page')
+		
+		
+		self.argParser.add_argument('--edit-md', action="append", dest="CONTENT_BLOCK_MD", help='Use with --template')
 		
 		
 	def route(self):
@@ -32,7 +35,8 @@ class Dispatch(object):
 			self.createRootPage(args['PAGE_NAME'][0])
 		elif args['PROJECT_NAME'] != None and args['PROJECT_NAME'] != '':
 			self.createProject(args['PROJECT_NAME'][0])
-		
+		else:
+			self.argParser.print_help()
 		
 	def getProjectName(self):
 		return "%s/_config/site.json" % os.getcwd()	
