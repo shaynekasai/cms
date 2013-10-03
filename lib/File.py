@@ -2,6 +2,8 @@ import shutil
 import errno
 import os 
 import json
+import tempfile
+import subprocess
 
 from Json import Json
 
@@ -34,3 +36,16 @@ class File(object):
 	def setTemplate(self, page_name, template_filename):
 		jsonObj = Json()
 		self.writePage(jsonObj.setPageTemplate(page_name, template_filename))
+
+	def createMarkdown(self, page_name, template_block):
+		fi, fname = tempfile.mkstemp()
+		f = os.fdopen(fi, "w")
+		f.write("A First Level Header\n====================\n")
+		f.close()
+		
+		cmd = os.environ.get('VISUAL_EDITOR', 'vi') + ' ' + fname
+		subprocess.call(cmd, shell=True)
+		
+		with open(fname, 'r') as f:
+		    print f.read()
+		os.unlink(fname)
