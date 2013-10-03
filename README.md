@@ -39,6 +39,11 @@ Phase 3
 
 Quick Start
 ---------------------
+For now create an alias like this:
+
+alias cms="python /path/to/your/cms.py" or whatever and then you can run cms.py anywhere.  Eventually I'll make some sort of installer that will do all of this.
+
+
 To create a new project:<br/>
 cms --create foo
 
