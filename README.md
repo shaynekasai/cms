@@ -15,20 +15,20 @@ This is NOT, I repeat, this is NOT meant for production use or the typical user.
 then hurrah!
 
 
-Phase 1 Roadmap
+Phase 1
 ---------------------
 - Config
 - JSON support
 - Page creation
 
-Phase 2 Roadmap
+Phase 2 
 ---------------------
 - Jinja2 templating
 - Markdown content entry
 - SASS support
 - Site generation
 
-Phase 3 Roadmap
+Phase 3 
 ---------------------
 - FTP / FS / GIT support
 - Minification
