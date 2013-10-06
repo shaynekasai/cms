@@ -4,6 +4,7 @@ import os
 import json
 import tempfile
 import subprocess
+import markdown
 
 from Json import Json
 
@@ -71,4 +72,29 @@ class File(object):
 	def build(self, buildType):
 		print "Building..."	
 		
+		json_data = open('_config/pages.json')
+		pageConfig = json.load(json_data)
+		json_data.close()
 		
+		
+		#loop thru
+		currentNode = pageConfig["pages"]["config"]
+		self.walkTree(currentNode, "/")
+		
+		
+	def walkTree(self, nodeTree, folder):
+		for node in nodeTree:
+		
+			if folder == "/":
+				print "/%s.html" % node["name"]
+			else:
+				print "%s/%s.html" % (folder, node["name"])
+				# create the html page
+			
+			
+			if (node["pages"]):
+				# create a folder
+				folder = "%s%s" % (folder, node["name"])
+				self.walkTree(node["pages"], folder)
+	
+			
