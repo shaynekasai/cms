@@ -31,13 +31,18 @@ class File(object):
 		jsonObj = Json()
 		self.writePage(jsonObj.createRootPage(page_name))
 		
-	
-		
+	def writeMarkdown(self, content, filename):
+		with open(filename, 'w') as outfile:
+			outfile.write(content)
+		outfile.close()
+			
 	def setTemplate(self, page_name, template_filename):
 		jsonObj = Json()
 		self.writePage(jsonObj.setPageTemplate(page_name, template_filename))
 
 	def createMarkdown(self, page_name, template_block):
+		jsonObj = Json()
+		
 		fi, fname = tempfile.mkstemp()
 		f = os.fdopen(fi, "w")
 		f.write("A First Level Header\n====================\n")
@@ -45,7 +50,25 @@ class File(object):
 		
 		cmd = os.environ.get('VISUAL_EDITOR', 'vi') + ' ' + fname
 		subprocess.call(cmd, shell=True)
+		content = ""
 		
 		with open(fname, 'r') as f:
-		    print f.read()
+		    content = f.read()
 		os.unlink(fname)
+		
+		# search for the page name
+		filename = "_content/%s_%s.md" %  (page_name.replace("/", "_"), template_block)
+		self.writeMarkdown(content, filename)
+		
+		
+		markdown_block = {template_block:filename}
+		self.writePage(jsonObj.setPageMarkdown(page_name, markdown_block))
+		
+		print filename
+		
+		# now we need to push this to a file
+	
+	def build(self, buildType):
+		print "Building..."	
+		
+		

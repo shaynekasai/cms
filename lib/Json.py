@@ -1,3 +1,6 @@
+# TODO
+# Get rid of the repetition and turn them into methods
+#
 import json
 
 class Json(object):
@@ -33,4 +36,22 @@ class Json(object):
 		
 		lastNode["template"] = template_filename
 					
+		return self.pageConfig
+	
+	
+		
+	def setPageMarkdown(self, page_name, markdown_block):
+		nodePath = page_name.split("/")
+		
+		currentNode = self.pageConfig["pages"]["config"]
+		lastNode = None
+		
+		for path in nodePath:
+			for node in currentNode:
+				if node["name"] == path:
+					lastNode = node
+					currentNode = node["pages"]
+		
+		lastNode["content"].append(markdown_block)
+		
 		return self.pageConfig

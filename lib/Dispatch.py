@@ -24,6 +24,9 @@ class Dispatch(object):
 		self.argParser.add_argument('--edit-md', action="append", dest="CONTENT_BLOCK_MD", help='Use with --page')
 		
 		
+		self.argParser.add_argument('--build', action="append", dest="BUILD_TYPE", help='Generate the site. Options are static, ftp, or git')
+		
+		
 	def route(self):
 		args = vars(self.argParser.parse_args())
 		
@@ -37,8 +40,14 @@ class Dispatch(object):
 			self.createProject(args['PROJECT_NAME'][0])
 		elif args['PAGE_NAME'] != None and args['CONTENT_BLOCK_MD'] != '':
 			self.editMarkdown(args['PAGE_NAME'][0], args['CONTENT_BLOCK_MD'][0] )
+		elif args['BUILD_TYPE'] != None:
+			self.build(args['BUILD_TYPE'])
 		else:
 			self.argParser.print_help()
+	
+	def build(self, buildType):
+		objFile = File()
+		objFile.build(buildType)
 		
 	def getProjectName(self):
 		return "%s/_config/site.json" % os.getcwd()	
